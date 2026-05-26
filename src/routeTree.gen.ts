@@ -29,6 +29,7 @@ import { Route as HandoffsRouteImport } from './routes/handoffs'
 import { Route as FollowUpsRouteImport } from './routes/follow-ups'
 import { Route as CoachRouteImport } from './routes/coach'
 import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as ActivityRouteImport } from './routes/activity'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SupplyHubIndexRouteImport } from './routes/supply-hub/index'
@@ -168,6 +169,11 @@ const CoachRoute = CoachRouteImport.update({
 const CalendarRoute = CalendarRouteImport.update({
   id: '/calendar',
   path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ActivityRoute = ActivityRouteImport.update({
@@ -374,6 +380,7 @@ const MytTourIdReportRoute = MytTourIdReportRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/activity': typeof ActivityRoute
+  '/analytics': typeof AnalyticsRoute
   '/calendar': typeof CalendarRoute
   '/coach': typeof CoachRoute
   '/follow-ups': typeof FollowUpsRoute
@@ -436,6 +443,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/activity': typeof ActivityRoute
+  '/analytics': typeof AnalyticsRoute
   '/calendar': typeof CalendarRoute
   '/coach': typeof CoachRoute
   '/follow-ups': typeof FollowUpsRoute
@@ -499,6 +507,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/activity': typeof ActivityRoute
+  '/analytics': typeof AnalyticsRoute
   '/calendar': typeof CalendarRoute
   '/coach': typeof CoachRoute
   '/follow-ups': typeof FollowUpsRoute
@@ -563,6 +572,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/activity'
+    | '/analytics'
     | '/calendar'
     | '/coach'
     | '/follow-ups'
@@ -625,6 +635,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/activity'
+    | '/analytics'
     | '/calendar'
     | '/coach'
     | '/follow-ups'
@@ -687,6 +698,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/activity'
+    | '/analytics'
     | '/calendar'
     | '/coach'
     | '/follow-ups'
@@ -750,6 +762,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ActivityRoute: typeof ActivityRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   CalendarRoute: typeof CalendarRoute
   CoachRoute: typeof CoachRoute
   FollowUpsRoute: typeof FollowUpsRoute
@@ -946,6 +959,13 @@ declare module '@tanstack/react-router' {
       path: '/calendar'
       fullPath: '/calendar'
       preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/activity': {
@@ -1269,6 +1289,7 @@ const MytTourIdRouteWithChildren = MytTourIdRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActivityRoute: ActivityRoute,
+  AnalyticsRoute: AnalyticsRoute,
   CalendarRoute: CalendarRoute,
   CoachRoute: CoachRoute,
   FollowUpsRoute: FollowUpsRoute,

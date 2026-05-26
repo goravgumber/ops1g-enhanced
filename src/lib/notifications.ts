@@ -13,6 +13,7 @@ import type { Role } from "./types";
 
 export type NotifSeverity = "info" | "success" | "warn" | "urgent";
 export type NotifChannel = "in-app" | "todo" | "calendar" | "email";
+export type NotificationCategory = "lead" | "followup" | "tour" | "inventory" | "sequence" | "system";
 
 export interface AppNotification {
   id: string;
@@ -39,6 +40,8 @@ export interface AppNotification {
   emailQueued?: boolean;
   /** todo state — set when channels include "todo" */
   todoDone?: boolean;
+  /** notification category for filtering */
+  category?: NotificationCategory;
 }
 
 export interface BroadcastInput {

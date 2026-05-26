@@ -13,6 +13,7 @@ import { SettingsProvider as MYTSettingsProvider } from "@/myt/lib/settings-cont
 import { TourDataProvider as MYTTourDataProvider } from "@/myt/lib/tour-data-context";
 import { OwnerProvider } from "@/owner/owner-context";
 import { OnboardingWalkthrough } from "@/components/OnboardingWalkthrough";
+import { ThemeProvider } from "@/lib/theme-context";
 
 import appCss from "../styles.css?url";
 
@@ -79,19 +80,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
-    <QueryClientProvider client={queryClient}>
-      <MYTSettingsProvider>
-        <MYTTourDataProvider>
-          <MYTAppProvider>
-            <OwnerProvider>
-              <Outlet />
-              <Toaster />
-              <KeyboardShortcuts />
-              <OnboardingWalkthrough />
-            </OwnerProvider>
-          </MYTAppProvider>
-        </MYTTourDataProvider>
-      </MYTSettingsProvider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <MYTSettingsProvider>
+          <MYTTourDataProvider>
+            <MYTAppProvider>
+              <OwnerProvider>
+                <Outlet />
+                <Toaster />
+                <KeyboardShortcuts />
+                <OnboardingWalkthrough />
+              </OwnerProvider>
+            </MYTAppProvider>
+          </MYTTourDataProvider>
+        </MYTSettingsProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }

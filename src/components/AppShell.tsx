@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Target, CalendarPlus, ClipboardList, Boxes, Activity,
   Building2, Search, Sun, Command, Trophy, Sparkles, MessageSquare,
   IndianRupee, MapPin, Zap, Users, Home, Calendar, Store, Swords, Settings, AlertTriangle,
-  ShieldCheck, Inbox, Camera, HelpCircle, Layers, HeartPulse,
+  ShieldCheck, Inbox, Camera, HelpCircle, Layers, HeartPulse, BarChart3,
 } from "lucide-react";
 import { NotificationCenter } from "./NotificationCenter";
 import { ProfileMenu } from "./ProfileMenu";
@@ -114,6 +114,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/myt/war-room", label: "War Room", icon: Swords, accent: true },
       { to: "/myt/team", label: "Team", icon: Users },
       { to: "/revenue", label: "Revenue", icon: IndianRupee },
+      { to: "/analytics", label: "Analytics", icon: BarChart3 },
       { to: "/myt/funnel", label: "Funnel", icon: Activity },
       { to: "/myt/zones", label: "Zones", icon: MapPin },
       { to: "/myt/owners-compare", label: "Owners", icon: ShieldCheck },
@@ -125,6 +126,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/myt/leads", label: "Leads", icon: Target, accent: true },
       { to: "/myt/schedule", label: "Schedule", icon: CalendarPlus },
       { to: "/calendar", label: "Calendar", icon: Calendar },
+      { to: "/analytics", label: "Analytics", icon: BarChart3 },
       { to: "/myt/marketplace", label: "Marketplace", icon: Store },
       { to: "/supply-hub", label: "Supply Hub", icon: Layers },
       { to: "/sequences", label: "Outreach", icon: Zap },
@@ -135,6 +137,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/tours", label: "My Tours", icon: CalendarPlus, badge: incompletePostTour },
       { to: "/follow-ups", label: "Follow-ups", icon: ClipboardList, badge: overdueCount },
       { to: "/calendar", label: "Calendar", icon: Calendar },
+      { to: "/analytics", label: "Analytics", icon: BarChart3 },
       { to: "/handoffs", label: "Handoffs", icon: MessageSquare, badge: unreadHandoffs },
       { to: "/myt/marketplace", label: "Marketplace", icon: Store },
       { to: "/myt/tcm/performance", label: "My Stats", icon: Activity },
@@ -145,6 +148,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       { to: "/owner/rooms", label: "Rooms", icon: Building2 },
       { to: "/owner/inventory", label: "Inventory", icon: Layers },
       { to: "/owner/visits", label: "Tours", icon: Camera },
+      { to: "/analytics", label: "Analytics", icon: BarChart3 },
       { to: "/owner/insights", label: "Insights", icon: IndianRupee },
     ],
   };

@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useApp } from "@/lib/store";
+import { useTheme } from "@/lib/theme-context";
 import { cn } from "@/lib/utils";
 import {
   UserRound,
@@ -36,6 +37,8 @@ import {
   Building2,
   ShieldCheck,
   Target,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -48,6 +51,7 @@ const ROLE_META = {
 
 export function ProfileMenu() {
   const { role, setRole, currentTcmId, setCurrentTcmId, tcms } = useApp();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const meta = ROLE_META[role];
   const tcm = role === "tcm" ? tcms.find((t) => t.id === currentTcmId) : null;
@@ -119,6 +123,20 @@ export function ProfileMenu() {
             </DropdownMenuSubContent>
           </DropdownMenuSub>
         )}
+
+        <DropdownMenuSeparator />
+
+        <DropdownMenuItem onSelect={toggleTheme}>
+          {theme === "light" ? (
+            <>
+              <Moon className="mr-2 h-4 w-4" /> Dark mode
+            </>
+          ) : (
+            <>
+              <Sun className="mr-2 h-4 w-4" /> Light mode
+            </>
+          )}
+        </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
